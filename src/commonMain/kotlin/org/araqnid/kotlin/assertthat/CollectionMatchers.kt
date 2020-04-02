@@ -12,6 +12,31 @@ val emptyCollection = object : Matcher<Collection<Any?>> {
     override val negatedDescription = "is not empty"
 }
 
+fun hasSize(expectedSize: Int) = has(Collection<*>::size, equalTo(expectedSize))
+
+fun <T> containsTheItem(expected: Matcher<T>): Matcher<Collection<T>> {
+    return object : Matcher<Collection<T>> {
+        override fun match(actual: Collection<T>): AssertionResult {
+            if (actual.isEmpty())
+                return AssertionResult.Mismatch("was empty")
+
+            val results = actual.map { expected.match(it) }
+            if (AssertionResult.Match in results)
+                return AssertionResult.Match
+
+            return AssertionResult.Mismatch(buildString {
+                append("did not contain match")
+                results.forEachIndexed { index, result ->
+                    append("\n#$index: ${describe(result)}")
+                }
+            })
+        }
+
+        override val description = "contains ${describe(expected)}"
+        override val negatedDescription = "does not contain ${describe(expected)}"
+    }
+}
+
 fun <T> containsOnly(expected: Matcher<T>): Matcher<Collection<T>> {
     return object : Matcher<Collection<T>> {
         override fun match(actual: Collection<T>): AssertionResult {
