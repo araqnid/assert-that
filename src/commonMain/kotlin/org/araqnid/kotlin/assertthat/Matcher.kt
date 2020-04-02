@@ -62,8 +62,8 @@ fun <T : Any> present(valueMatcher: Matcher<T>) = object : Matcher<T?> {
         get() = valueMatcher.description
 }
 
-fun <T> equalTo(value: T) = object : Matcher<T> {
-    override fun match(actual: T): AssertionResult {
+fun <T> equalTo(value: T) = object : Matcher<T?> {
+    override fun match(actual: T?): AssertionResult {
         if (actual == value) return AssertionResult.Match
         return AssertionResult.Mismatch("was ${describe(actual)}")
     }
