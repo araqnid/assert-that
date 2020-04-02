@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "org.araqnid.kotlin.assert-that"
-version = "0.0.0"
+version = "0.0.1"
 
 repositories {
     jcenter()
