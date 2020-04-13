@@ -8,7 +8,7 @@ fun <T, R> has(property: KProperty1<T, R>, propertyMatcher: Matcher<R>): Matcher
 internal class PredicateMatcher<in T>(name: String, private val predicate: (T) -> Boolean) : Matcher<T> {
     override fun match(actual: T): AssertionResult {
         if (predicate(actual)) return AssertionResult.Match
-        return AssertionResult.Mismatch("was: ${describe(actual)}")
+        return AssertionResult.Mismatch("was ${describe(actual)}")
     }
 
     override val description = identifierToDescription(name)

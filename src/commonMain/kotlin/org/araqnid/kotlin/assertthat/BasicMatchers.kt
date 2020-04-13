@@ -3,7 +3,7 @@ package org.araqnid.kotlin.assertthat
 val isAbsent = object : Matcher<Any?> {
     override fun match(actual: Any?): AssertionResult {
         if (actual == null) return AssertionResult.Match
-        return AssertionResult.Mismatch("was: ${describe(actual)}")
+        return AssertionResult.Mismatch("was ${describe(actual)}")
     }
 
     override val description = "null"

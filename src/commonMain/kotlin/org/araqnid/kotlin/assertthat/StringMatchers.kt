@@ -13,7 +13,7 @@ fun contains(pattern: Regex) = object : Matcher<CharSequence> {
 fun containsSubstring(substring: CharSequence) = object : Matcher<CharSequence> {
     override fun match(actual: CharSequence): AssertionResult {
         return if (actual.contains(substring)) AssertionResult.Match
-        else AssertionResult.Mismatch("was $actual")
+        else AssertionResult.Mismatch("was ${describe(actual)}")
     }
 
     override val description: String = "contains \"$substring\""

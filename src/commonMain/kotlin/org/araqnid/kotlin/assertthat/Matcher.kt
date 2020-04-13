@@ -20,7 +20,9 @@ interface Matcher<in T> : SelfDescribing {
 }
 
 fun <T> Matcher<T>.describedBy(fn: () -> String): Matcher<T> {
-    return object : Matcher<T> by this {
+    return object : Matcher<T> {
+        override fun match(actual: T): AssertionResult = this@describedBy.match(actual)
+
         override val description: String
             get() = fn()
     }
@@ -31,9 +33,8 @@ sealed class AssertionResult {
         override fun toString() = "Match"
     }
 
-    class Mismatch(override val description: String) : AssertionResult(), SelfDescribing {
+    data class Mismatch(override val description: String) : AssertionResult(), SelfDescribing {
         fun mapMessage(fn: (String) -> String) = Mismatch(fn(description))
-        override fun toString() = "Mismatch[${describe(description)}]"
     }
 }
 
