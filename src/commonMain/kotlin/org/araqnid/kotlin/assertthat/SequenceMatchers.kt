@@ -87,14 +87,14 @@ fun <T> producesSequence(description: String, body: suspend SequenceMatcherScope
     return object : Matcher<Sequence<T>> {
         override fun match(actual: Sequence<T>): AssertionResult {
             val scope = object : SequenceMatcherScope<T>, Continuation<Unit> {
-                init {
-                    body.startCoroutine(this, this)
-                }
-
                 override var index = 0
                 var isFinished = false
                 var failureException: Throwable? = null
                 var continuation: Continuation<T>? = null
+
+                init {
+                    body.startCoroutine(this, this)
+                }
 
                 override suspend fun take(): T {
                     return suspendCoroutine { cont ->
