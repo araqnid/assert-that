@@ -1,10 +1,10 @@
 plugins {
-    kotlin("multiplatform") version "1.3.71"
+    kotlin("multiplatform") version "1.4.0-rc"
     `maven-publish`
 }
 
 group = "org.araqnid.kotlin.assert-that"
-version = "0.0.1"
+version = "0.1.0"
 
 repositories {
     jcenter()
