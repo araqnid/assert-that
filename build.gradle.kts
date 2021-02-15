@@ -32,3 +32,15 @@ dependencies {
     "jsMainImplementation"(kotlin("stdlib-js"))
     "jsMainImplementation"(kotlin("test-js"))
 }
+
+publishing {
+    repositories {
+        maven(url = "https://maven.pkg.github.com/araqnid") {
+            name = "github"
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
