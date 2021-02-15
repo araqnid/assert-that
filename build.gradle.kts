@@ -35,7 +35,7 @@ dependencies {
 
 publishing {
     repositories {
-        maven(url = "https://maven.pkg.github.com/araqnid") {
+        maven(url = "https://maven.pkg.github.com/araqnid/assert-that") {
             name = "github"
             credentials {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
