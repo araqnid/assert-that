@@ -32,17 +32,3 @@ dependencies {
     "jsMainImplementation"(kotlin("stdlib-js"))
     "jsMainImplementation"(kotlin("test-js"))
 }
-
-publishing {
-    val bintrayUser = (project.properties["bintray.user"] ?: "").toString()
-    val bintrayKey = (project.properties["bintray.apiKey"] ?: "").toString()
-    repositories {
-        maven(url = "https://api.bintray.com/maven/araqnid/maven/assert-that/;publish=1") {
-            name = "bintray"
-            credentials {
-                username = bintrayUser
-                password = bintrayKey
-            }
-        }
-    }
-}
