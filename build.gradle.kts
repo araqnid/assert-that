@@ -21,34 +21,16 @@ kotlin {
         nodejs { }
         useCommonJs()
     }
-
-    sourceSets["commonMain"].dependencies {
-        implementation(kotlin("stdlib-common"))
-        implementation(kotlin("test-common"))
-        compileOnly(kotlin("test-annotations-common"))
-    }
-
-    sourceSets["commonTest"].dependencies {
-    }
-
-    sourceSets["jvmMain"].dependencies {
-        implementation(kotlin("stdlib"))
-        implementation(kotlin("test-junit"))
-    }
-
-    sourceSets["jvmTest"].dependencies {
-    }
-
-    sourceSets["jsMain"].dependencies {
-        implementation(kotlin("stdlib-js"))
-        implementation(kotlin("test-js"))
-    }
-
-    sourceSets["jsTest"].dependencies {
-    }
 }
 
 dependencies {
+    commonMainImplementation(kotlin("stdlib-common"))
+    commonMainImplementation(kotlin("test-common"))
+    commonMainCompileOnly(kotlin("test-annotations-common"))
+    "jvmMainImplementation"(kotlin("stdlib-jdk8"))
+    "jvmMainImplementation"(kotlin("test-junit"))
+    "jsMainImplementation"(kotlin("stdlib-js"))
+    "jsMainImplementation"(kotlin("test-js"))
 }
 
 publishing {
