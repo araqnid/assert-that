@@ -89,3 +89,18 @@ assertThat("womble", has(String::length, equalTo(5) or equalTo(7)))
 AssertionError: expected: a value that has length that is equal to 5 or is equal to 7
 but had length that was 6
 ```
+
+Get the library
+---------------
+
+Assert-That is published on [Maven Central](https://search.maven.org). You need something like this in
+`build.gradle` or `build.gradle.kts`:
+
+```kotlin
+repositories {
+    mavenCentral()
+}
+dependencies {
+    testImplementation("org.araqnid.kotlin.assert-that:assert-that:0.1.1")
+}
+```
