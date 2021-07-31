@@ -99,7 +99,7 @@ publishing {
     }
 }
 
-signing(Action {
+signing {
     useGpgCmd()
     sign(publishing.publications)
-})
+}
