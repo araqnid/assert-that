@@ -2,6 +2,7 @@
 
 [ ![Kotlin](https://img.shields.io/badge/kotlin-1.4.30-blue.svg)](http://kotlinlang.org)
 [![Kotlin JS IR supported](https://img.shields.io/badge/Kotlin%2FJS-IR%20supported-yellow)](https://kotl.in/jsirsupported)
+[![Gradle Build](https://github.com/araqnid/assert-that/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/araqnid/assert-that/actions/workflows/gradle-build.yml)
 
 Kotlin multiplatform test assertion library inspired by [Hamkrest](https://github.com/npryce/hamkrest), itself
 a Kotlinisation of [Hamcrest](https://github.com/hamcrest/JavaHamcrest)
