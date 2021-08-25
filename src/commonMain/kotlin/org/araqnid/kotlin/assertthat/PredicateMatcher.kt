@@ -44,7 +44,7 @@ internal class PredicateMatcher<in T>(name: String, private val predicate: (T) -
                 }
 
                 if (isWordPart(c)) {
-                    buf.append(c.toLowerCase())
+                    buf.append(c.lowercaseChar())
                 }
             }
 
